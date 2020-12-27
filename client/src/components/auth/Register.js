@@ -1,8 +1,12 @@
 import React, { Fragment, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setAlert } from "../../actions/alert";
 
 const Register = () => {
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,7 +22,7 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      console.log("Passwords do not match");
+      dispatch(setAlert("Passwords do not match", "danger"));
     } else {
       console.log("Sucess");
     }
@@ -84,4 +88,7 @@ const Register = () => {
   );
 };
 
+//connect takes two parameters
+//1st params any state you want to map
+//2nd object with any actions you want to use
 export default Register;
