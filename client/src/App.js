@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import "./App.css";
 
 //Components
@@ -11,7 +11,20 @@ import Alert from "./components/layout/Alert";
 //Router
 import { Route, Switch } from "react-router-dom";
 
+import store from "./store";
+
+import { loadUser } from "./actions/auth";
+import setAuthToken from "./utils/setAuthToken";
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
 const App = () => {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+
   return (
     <Fragment>
       <Navbar />
