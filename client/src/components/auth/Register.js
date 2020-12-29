@@ -5,17 +5,20 @@ import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 
 const Register = () => {
+  //Redux
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state.auth);
+
+  //formData Hook
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     password2: "",
   });
-
   const { name, email, password, password2 } = formData;
 
+  //
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -89,7 +92,4 @@ const Register = () => {
   );
 };
 
-//connect takes two parameters
-//1st params any state you want to map
-//2nd object with any actions you want to use
 export default Register;

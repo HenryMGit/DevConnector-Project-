@@ -95,11 +95,11 @@ router.post(
       }
 
       //Create
+      console.log(profileFields);
       profile = new Profile(profileFields);
       await profile.save();
       res.json(profile);
     } catch (err) {
-      console.log(err.message);
       res.status(500).send("Server Error");
     }
   }
