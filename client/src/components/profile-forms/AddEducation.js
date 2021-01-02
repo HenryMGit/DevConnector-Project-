@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addEducation } from "../../actions/profile";
 
@@ -90,7 +90,6 @@ const AddEducation = () => {
               type="checkbox"
               name="current"
               checked={current}
-              value=""
               value={current}
               onChange={(e) => {
                 setFormData({ ...formData, current: !current });
